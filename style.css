@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+
+.dancing-font { font-family: 'Dancing Script', cursive; }
+
+.fade-in-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+
+.fade-in-scroll.visible { opacity: 1; transform: translateY(0); }
+
+.rotate-hover { transition: transform 0.3s ease; }
+
+.rotate-hover:hover { transform: rotate(5deg) scale(1.05); }
+
+.parallax-bg { background-attachment: fixed; background-size: cover; }
+
+.heart-svg {
+    width: 80px; height: 80px; color: #ec4899; stroke: #ec4899; fill: transparent;
+    animation: heartbeat 1.6s ease-in-out infinite, float 3s ease-in-out infinite;
+    filter: drop-shadow(0 4px 12px rgba(236, 72, 153, 0.3));
+}
+
+@media (min-width: 640px) { .heart-svg { width: 100px; height: 100px; } }
+
+@keyframes heartbeat { 0%, 100% { transform: scale(1); } 25% { transform: scale(1.15); } 50% { transform: scale(1); } 75% { transform: scale(1.15); } }
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+.timeline-event { transition: all 0.3s ease; }
+
+.timeline-event:hover { transform: translateX(10px); box-shadow: 0 0 20px rgba(236, 72, 153, 0.5); }
+
+#map { height: 400px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+
+
+.polaroid { /* Tus estilos previos */ animation: fadeIn 1.5s ease; }
+
+/* Brillo en títulos sobre ella */
+h2 {
+    position: relative;
+    overflow: hidden;
+}
+h2::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 300%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 70%);
+    animation: shine 3s infinite linear;
+}
+@keyframes shine {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100%); }
+}
+
+/* === ESTILO POLAROID PERFECTO === */
+.polaroid {
+    background: white;
+    padding: 12px 12px 30px 12px; /* Espacio extra abajo para el caption */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: rotate(-2deg);
+    transition: all 0.4s ease;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.polaroid::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(to top, rgba(255,255,255,0.9), transparent);
+    pointer-events: none;
+}
+
+.polaroid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+.polaroid p {
+    text-align: center;
+    margin-top: 12px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    color: #e91e63;
+    font-weight: 600;
+}
+
+/* Hover: efecto realista */
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.05) translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+}
+
+/* Responsive: más pequeño en móvil */
+@media (max-width: 640px) {
+    .polaroid {
+        transform: rotate(0deg);
+        padding: 10px 10px 25px 10px;
+    }
+    .polaroid img {
+        height: 160px;
+    }
+    .polaroid p {
+        font-size: 1rem;
+    }
+}
